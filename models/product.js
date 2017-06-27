@@ -5,7 +5,7 @@ const ProductSchema = new Schema({ // describe the stucture of the object
   name: { type: String },
   price: { type: Number, default: 1 },
   imageUrl: { type: String, default: '/images/data.gif' },
-  description: { type: String }
+  description: { type: String },
 });
 
 // Model

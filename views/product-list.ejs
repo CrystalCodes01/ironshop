@@ -1,3 +1,5 @@
+<h2> Product List </h2>
+
 <ul>
     <% productsAndStuff.forEach((oneProd) => { %>
       <li>
@@ -6,6 +8,11 @@
         <!--req.query.myId -->
         <a href="/product/details?myId=<%= oneProd._id %>">
           View Details
+        </a>
+        <br>
+        <!--req.query.myId -->
+        <a href="/product/edit?myId=<%= oneProd._id %>">
+          Edit Product
         </a>
         <br>
       </li>

@@ -4,26 +4,26 @@
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ironshop');
-const Product = require('../models/product-model.js');
+const Product = require('/models/product.js');
 
 const productInfoArray = [
   {
       name: 'Phone Case',
       price: 9.99,
       imageUrl: '/images/phone.gif',
-      description: ''
+      description: 'Super awesome phone case.',
   },
   {
       name: 'Bean Bag',
       price: 25,
       imageUrl: '/images/beanbag.gif',
-      description: ''
+      description: 'Comfy Bean Bag',
   },
   {
       name: 'Tissues',
       price: 13.72,
       imageUrl: '/images/tissue.gif',
-      description: ''
+      description: 'Get better soon!',
   },
   {
       name: 'Yoga Mat',

@@ -57,8 +57,8 @@ Product.findById(
 
 
 
-// # Step 1 of updating
-app.get('product/edit', (req, res, next) => {
+// # Step 1 of updating - refer to edit product.ejs & product list.ejs
+router.get('/product/edit', (req, res, next) => {
   Product.findById (
     req.query.myId,
     (err, productFromDb) => {
@@ -69,6 +69,28 @@ app.get('product/edit', (req, res, next) => {
         res.locals.productDetails = productFromDb;
         res.render('edit-product.ejs');
       }
+  );
+});
+
+
+router.post('/products/update', (req, res, next) => {
+  Product.findByIdAndUpdate(
+    req.query.myId, // 1st argument -> id of document to update
+
+    {               // 2nd argument -> id of document to update
+      name: req.body.productName,
+      price: req.body.productPrice,
+      iamgeUrl: req.body.productImageUrl,
+      description: req.body.productDescription
+    },
+
+    (err, productFromDb) => {  // 3rd argument -> callback
+      if (err) {
+        next(err);
+        return;
+      }
+        res.redirect('/product/details?myId=' + productFromDb._id);
+    }
   );
 });
 
