@@ -11,7 +11,7 @@ const ProductSchema = new Schema({ // describe the stucture of the object
 // Model
 //  constructor function that allows us to interact with a single collection
 
-const ProductModel = mongoose.model('Product', ProductSchema); // call the Schema
+const Product = mongoose.model('Product', ProductSchema); // call the Schema
 
 // Important!! //
-module.exports = ProductModel;
+module.exports = Product;

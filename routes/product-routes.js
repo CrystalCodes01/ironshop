@@ -3,7 +3,7 @@ const Product = require('../models/product.js');
 const router = express.Router();
 
 router.get('/products', (req, res, next) => {
-  ProductModel.find((err, productResults) => {
+  Product.find((err, productResults) => { // database query
     if (err) {
       next(err);
       return;
