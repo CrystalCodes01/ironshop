@@ -1,0 +1,25 @@
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+
+
+<form method="post" action="/products">
+  <label for="product-name-input"> Name of product </label>
+  <input id="product-name-input" type="text" name="productName">
+
+  <br>
+
+  <label for="product-price-input"> Price of Product </label>
+  <input id="product-price-input" type="number" step:"0.1" name="productPrice"> <!-- include step to allow decimal input -->
+
+  <br>
+
+  <label for="product-image-input"> Image of Product </label>
+  <input id="product-image-input" type="url" name="productImageUrl">
+
+  <br>
+
+  <label for="product-discription-input"> Discription </label>
+  <textarea id="product-discription-input" name:"productDiscription"></textarea> <!--allows for longer input by user -->
+
+  <button> Add this Product 📍 </button>
+</form>
