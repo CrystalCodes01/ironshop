@@ -9,7 +9,7 @@ const ProductSchema = new Schema({
 });
 
 // Model
-//  Constuctor function 
+//  constructor function that allows us to interact with a single collection
 
 const Product = mongoose.model('Product', ProductSchema);
 

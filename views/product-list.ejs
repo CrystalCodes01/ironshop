@@ -1,0 +1,10 @@
+<h2> The Products </h2>
+
+<ul>
+    <% productsAndStuff.forEach((oneProd) => { %>
+      <li>
+        <h3> <%= oneProd.name %> </h3>
+        <p> $ <%= oneProd.price %> </p>
+      </li>
+  <% }) %>
+  </ul>

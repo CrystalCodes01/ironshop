@@ -30,6 +30,9 @@ app.use(layouts);
 const index = require('./routes/index');
 app.use('/', index);
 
+const myProductRoutes = require('./routes/product-routes.js');
+app.use('/', myProductRoutes);
+
 // ----- ROUTES END ------ //
 
 // catch 404 and forward to error handler
