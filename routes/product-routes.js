@@ -2,27 +2,27 @@ const express = require('express');
 const Product = require('../models/product.js');
 const router = express.Router();
 
-router.get('/products', (req, res, next) => {
+router.get('/product', (req, res, next) => {
   Product.find((err, productResults) => { // database query
     if (err) {
       next(err);
       return;
     }
     res.render('product-list.ejs', {
-      productsAndStuff: productResults
+      productAndStuff: productResults
     });
   });
 });
 
 // # Step 1 of form submission
-router.get('/products/new', (req, res, next) => { // RESTFUL route
+router.get('/product/new', (req, res, next) => { // RESTFUL route
   res.render('new-product.ejs');
 });
 
 // # Step 2 of form submission
-// <form method="post" action="/products"
+// <form method="post" action="/product"
 
-router.post('/products', (req, res, next) => {
+router.post('/product', (req, res, next) => {
   const theProduct = new Product ({
     name: req.body.productName,
     price: req.body.productPrice,
@@ -37,13 +37,14 @@ router.post('/products', (req, res, next) => {
     }
     // redirect is STEP #3
     // you can only redirect to a URL
-    res.redirect('/products');
+    res.redirect('/product');
   });
 });
 
-router.get('/product/details', (req, res, next) => {
+router.get('/product/:myId', (req, res, next) => {
+
 Product.findById(
-  req.query.myId,  // 1st argument -> the id to find in the DB
+  req.params.myId,  // 1st argument -> the id to find in the DB
   (err, productFromDb) => { // 2nd argument -> callback
     if (err) {
       next(err);
@@ -58,9 +59,9 @@ Product.findById(
 
 
 // # Step 1 of updating - refer to edit product.ejs & product list.ejs
-router.get('/product/edit', (req, res, next) => {
+router.get('/product/:myId/edit', (req, res, next) => {
   Product.findById (
-    req.query.myId,
+    req.params.myId,
     (err, productFromDb) => {
       if (err) {
         next(err);
@@ -73,9 +74,9 @@ router.get('/product/edit', (req, res, next) => {
 });
 
 
-router.post('/products/update', (req, res, next) => {
+router.post('/product/:myId/update', (req, res, next) => {
   Product.findByIdAndUpdate(
-    req.query.myId, // 1st argument -> id of document to update
+    req.params.myId, // 1st argument -> id of document to update
 
     {               // 2nd argument -> id of document to update
       name: req.body.productName,
@@ -89,14 +90,14 @@ router.post('/products/update', (req, res, next) => {
         next(err);
         return;
       }
-        res.redirect('/product/details?myId=' + productFromDb._id);
+        res.redirect('/product/' + productFromDb._id);
     }
   );
 });
 
-router.post('/products/delete', (req, res, next) => {
+router.post('/product/:myId/delete', (req, res, next) => {
   Product.findByIdAndRemove(
-    req.query.myId,            // 1st argument -> id of document to remove
+    req.params.myId,            // 1st argument -> id of document to remove
 
     (err, productFromDb) => {  // 2nd argument -> callback
       if (err) {
@@ -106,7 +107,7 @@ router.post('/products/delete', (req, res, next) => {
       }
 
       // If removed successfully, redirect to a URL.
-      res.redirect('/products');
+      res.redirect('/product');
         // you can ONLY redirect to a URL 🌏
     }
   );

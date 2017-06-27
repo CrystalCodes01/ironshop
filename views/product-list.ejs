@@ -1,22 +1,22 @@
 <h2> Product List </h2>
 
 <ul>
-    <% productsAndStuff.forEach((oneProd) => { %>
+    <% productAndStuff.forEach((oneProd) => { %>
       <li>
         <h3> <%= oneProd.name %> </h3>
         <p> $ <%= oneProd.price %> </p>
         <!--req.query.myId -->
-        <a href="/product/details?myId=<%= oneProd._id %>">
+        <a href="/product/<%= oneProd._id %>">
           View Details
         </a>
         <br>
         <!--req.query.myId -->
-        <a href="/product/edit?myId=<%= oneProd._id %>">
+        <a href="/product/<%= oneProd._id %>/edit">
           Edit Product
         </a>
         <br>
 
-        <form method="post" action="/products/delete?myId=<%= oneProd._id %>">
+        <form method="post" action="/product/<%= oneProd._id %>/delete">
           <button> Delete Button (POST) ☠️ </button>
         </form>
       </li>
