@@ -15,6 +15,10 @@
           Edit Product
         </a>
         <br>
+
+        <form method="post" action="/products/delete?myId=<%= oneProd._id %>">
+          <button> Delete Button (POST) ☠️ </button>
+        </form>
       </li>
   <% }) %>
 </ul>
