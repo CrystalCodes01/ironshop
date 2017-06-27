@@ -21,7 +21,7 @@ const productInfoArray = [
   },
   {
       name: 'Tissues',
-      price: 13.70,
+      price: 13.72,
       imageUrl: '/images/tissue.gif',
       description: ''
   },

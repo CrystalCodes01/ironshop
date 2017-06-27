@@ -19,12 +19,13 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(logger('dev')); // morgon logger
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(layouts);
+app.use(express.static(path.join(__dirname, 'public'))); // static files, css etc.
+app.use(layouts); // dynamic views
+
 
 // ----- ROUTES ------ //
 const index = require('./routes/index');
@@ -34,6 +35,7 @@ const myProductRoutes = require('./routes/product-routes.js');
 app.use('/', myProductRoutes);
 
 // ----- ROUTES END ------ //
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
