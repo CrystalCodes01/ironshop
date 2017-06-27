@@ -4,7 +4,7 @@
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ironshop');
-const Product = require('../models/product.js');
+const Product = require('../models/product-model.js');
 
 const productInfoArray = [
   {
