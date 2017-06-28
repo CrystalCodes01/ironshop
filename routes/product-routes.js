@@ -31,10 +31,21 @@ router.post('/product', (req, res, next) => {
   });
 
   theProduct.save((err) => {
-    if (err) {
+    // If there was not a valadation error
+    if (err && theProduct.errors === undefined) {
       next(err);
       return;
     }
+    // If there were errors and they were valadation errors
+    if (err && theProduct.errors) {
+      res.locals.nameValadationError = theProduct.errors.name;
+      res.locals.priceValadationError = theProduct.errors.price;
+      res.locals.imageUrlValadationError = theProduct.errors.imageUrl;
+      res.locals.descriptionValadationError = theProduct.errors.description;
+      res.render('new-product.ejs');
+      return;
+    }
+
     // redirect is STEP #3
     // you can only redirect to a URL
     res.redirect('/product');
@@ -81,7 +92,7 @@ router.post('/product/:myId/update', (req, res, next) => {
     {               // 2nd argument -> id of document to update
       name: req.body.productName,
       price: req.body.productPrice,
-      iamgeUrl: req.body.productImageUrl,
+      imageUrl: req.body.productImageUrl,
       description: req.body.productDescription
     },
 

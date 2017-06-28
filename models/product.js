@@ -5,23 +5,26 @@ const Schema = mongoose.Schema;
 const ProductSchema = new Schema ({ // describe the stucture of the object
   name: {
   type: String,
-  required: true,
-  minlength:3, // minlength & maxlength are for strings only
-  maxlength: 255
+  required: [true, 'Please tell us your product name'],
+  minlength: [3, 'Name must be 3 characters or longer'], // minlength & maxlength are for strings only
+  maxlength: [1000, 'Name cannot be longer than 255 characters']
  },
   price: {
   type: Number,
   default: 1,
-  min: 0,
-  max: 1000
+  min: [3, 'Price must be at least $3'],
+  max: [1000, 'Price cannot be higher than $1000']
 },
-  imageUrl: { type: String, default: '/images/data.gif' },
-  description: { type: String },
-
-  category: {
+  imageUrl: {
     type: String,
-    enum: [ 'Tech', 'Food', 'Apparel', 'Home', 'Footwear' ]
-  },
+    default: '/images/data.gif' },
+
+   description: { type: String },
+
+  // category: {
+  //   type: String,
+  //   enum: [ 'Tech', 'Food', 'Apparel', 'Home', 'Footwear' ]
+  // },
 
   // Add a field inside of product documents called "reviews"
   // an array of ReviewModel ojbect with content stars and author
