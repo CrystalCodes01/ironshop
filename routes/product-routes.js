@@ -38,10 +38,10 @@ router.post('/product', (req, res, next) => {
     }
     // If there were errors and they were valadation errors
     if (err && theProduct.errors) {
-      res.locals.nameValadationError = theProduct.errors.name;
-      res.locals.priceValadationError = theProduct.errors.price;
-      res.locals.imageUrlValadationError = theProduct.errors.imageUrl;
-      res.locals.descriptionValadationError = theProduct.errors.description;
+      res.locals.nameValidationErrors = theProduct.errors.name;
+      res.locals.priceValidationErrors = theProduct.errors.price;
+      res.locals.imageUrlValidationErrors = theProduct.errors.imageUrl;
+      res.locals.descriptionValidationErrors = theProduct.errors.description;
       res.render('new-product.ejs');
       return;
     }
