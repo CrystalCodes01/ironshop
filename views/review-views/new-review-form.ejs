@@ -1,0 +1,24 @@
+<h2> REVIEWS </h2>
+
+<p> Write a new review for <i> <%= productDetails.name %> </i> </p>
+
+<form method="post" action="/product/<%= productDetails._id %>/reviews">
+
+  <label for="author-input"> Your name </label>
+  <input id="author-input" type="text" name="reviewAuthor">
+
+  <br><br>
+
+  <label for="stars-input"> Star Rating (1-5) </label>
+  <input id="stars-input" type="number" name="reviewStars">
+
+  <br><br>
+
+  <label for="content-input"> Comments </label>
+  <textarea id="content-input" name:"reviewContent"></textarea> <!--allows for longer input by user -->
+
+  <br><br>
+
+<button> Submit your review 📍 </button>
+
+</form>

@@ -6,6 +6,7 @@
         <h3> <%= oneProd.name %> </h3>
         <p> $ <%= oneProd.price %> </p>
         <!--req.query.myId -->
+
         <a href="/product/<%= oneProd._id %>">
           View Details
         </a>
@@ -15,6 +16,10 @@
           Edit Product
         </a>
         <br>
+
+        <a href="/product/<%= oneProd._id %>/reviews/new">
+          Review this product
+        </a>
 
         <form method="post" action="/product/<%= oneProd._id %>/delete">
           <button> Delete Button (POST) ☠️ </button>
